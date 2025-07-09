@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hola-mundo:latest
+    container_name: hola-mundo-web
+    ports:
+      - "8081:80"
+    networks:
+      - jenkins-net
+
+networks:
+  jenkins-net:
+    external: true
