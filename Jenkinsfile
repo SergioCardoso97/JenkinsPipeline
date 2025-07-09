@@ -15,17 +15,15 @@ pipeline {
         stage('Construir imagen Docker') {
             steps {
                 echo '🔧 Construyendo imagen con Docker Compose...'
-                sh 'docker-compose build'
+                sh 'docker compose build'
             }
         }
 
         stage('Desplegar contenedores') {
             steps {
                 echo '📦 Desplegando contenedores...'
-                sh '''
-                    docker-compose down || true
-                    docker-compose up -d
-                '''
+               sh 'docker compose down || true'
+                sh 'docker compose up -d'
             }
         }
 
